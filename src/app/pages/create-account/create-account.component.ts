@@ -1,3 +1,4 @@
+import { UsersService } from './../../service/users.service';
 import { Component } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 
@@ -8,11 +9,20 @@ import { FormBuilder,Validators } from '@angular/forms';
 })
 export class CreateAccountComponent {
 
-  constructor( private fb:FormBuilder){}
+  constructor( private fb:FormBuilder,public Service:UsersService){}
 
   createaccount=this.fb.group({
     email:['',[Validators.required,Validators.email]],
     userName:['',[Validators.required,Validators.maxLength(10)]],
     password:['',[Validators.required,Validators.maxLength(6)]]
   })
+
+  create(){
+    //console.log(this.createaccount.value)
+    this.Service.cretenewuser(this.createaccount.value).then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
 }

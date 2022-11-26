@@ -1,3 +1,4 @@
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -19,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,8 @@ import { environment } from '../environments/environment';
     MatCardModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    MaterialFileInputModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent],

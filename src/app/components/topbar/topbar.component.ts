@@ -1,3 +1,5 @@
+import { UsersService } from './../../service/users.service';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class TopbarComponent {
 
+  constructor(private router:Router,private service:UsersService){}
+
+  logout(){
+    this.service.user=undefined;
+    localStorage.clear();
+    this.router.navigate(['/login']);
+
+  }
 }

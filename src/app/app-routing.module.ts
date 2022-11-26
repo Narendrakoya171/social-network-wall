@@ -1,3 +1,4 @@
+import { PostsComponent } from './pages/posts/posts.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,10 @@ const routes: Routes = [
   },
   {
     path:'create-account', component: CreateAccountComponent
-  }
+  },
+  {
+    path:'posts',component:PostsComponent
+  },
 ];
 
 @NgModule({

@@ -13,13 +13,19 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import{ReactiveFormsModule,FormsModule} from '@angular/forms'
 import{HttpClientModule} from '@angular/common/http'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { PostsComponent } from './pages/posts/posts.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
     TopbarComponent,
     LoginComponent,
-    CreateAccountComponent
-
+    CreateAccountComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +37,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

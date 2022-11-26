@@ -1,9 +1,17 @@
 {
-  "users": [{
-    "email": "Narendra@gmail.com",
-    "userName": "Narendra",
-    "password": "123456",
-    "id": 1
-  }],
+  "users": [
+    {
+      "email": "Narendra@gmail.com",
+      "userName": "Narendra",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "email": "test@yopmail.com",
+      "userName": "test123",
+      "password": "654123",
+      "id": 2
+    }
+  ],
   "posts": []
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UsersService } from './../../service/users.service';
 import { Component } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
@@ -9,7 +10,7 @@ import { FormBuilder,Validators } from '@angular/forms';
 })
 export class CreateAccountComponent {
 
-  constructor( private fb:FormBuilder,public Service:UsersService){}
+  constructor( private fb:FormBuilder,public Service:UsersService,private router:Router){}
 
   createaccount=this.fb.group({
     email:['',[Validators.required,Validators.email]],
@@ -21,6 +22,9 @@ export class CreateAccountComponent {
     //console.log(this.createaccount.value)
     this.Service.cretenewuser(this.createaccount.value).then(res=>{
       console.log(res)
+      this.Service.user=res;
+      localStorage.setItem('user',JSON.stringify(res));
+      this.router.navigate(['/posts']);
     }).catch(err=>{
       console.log(err)
     })

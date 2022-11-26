@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="content-wrapper">
+        <mat-form-field appearance="fill">
+            <textarea
+                matInput="matInput"
+                cokTextareaAutosize="cokTextareaAutosize"
+                cdkAutosizeMinRows="5"
+                placeholder="search"></textarea>
+        </mat-form-field>
+        <div class="new-post-actions-container">
+            <button mat-raised-button="mat-raised-button" class="post-button">post</button>
+        </div>
+        <mat-card class="post-card">
+            <mat-card-header>
+                <mat-card-title>Charn</mat-card-title>
+            </mat-card-header>
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlH8s1Aex8wjVGqgWzfB0uabOMGh_4uBR62WeZdUXI8Q&s"
+                alt="image"
+                mat-card-image="mat-card-image">
+                <mat-card-content>
+                    <p>
+                        Enjoying it!
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button
+                        class="like-button"
+                        mat-icon-button="mat-icon-button"
+                        disableRipple="true">
+                        <mat-icon>
+                            favorite_border
+                        </mat-icon>
+                    </button>
+                    <span>10 liked it</span>
+                </mat-card-actions>
+                <div class="comments-container">
+                    <div class="comments">
+                        <div class="tittle">Comments</div>
+                        <p>
+                            <b>John</b>wow! Loved it!
+                        </p>
+                    </div>
+                </div>
+                <mat-form-field >
+                    <input matInput="matInput" type="text" placeholder="Add a comment"></mat-form-field>
+                    <button
+                        class="comment-button"
+                        mat-button="mat-button"
+                        mat-raised-button="mat-raised-button">comment</button>
+                </mat-card>
+            </div>
+        </div>

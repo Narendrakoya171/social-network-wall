@@ -5,7 +5,7 @@ import{HttpClient} from '@angular/common/http'
   providedIn: 'root'
 })
 export class UsersService {
-
+ user:any;
   constructor(private http:HttpClient) { }
   public cretenewuser(dataobj:any){
     return new Promise((resolve,reject)=>{

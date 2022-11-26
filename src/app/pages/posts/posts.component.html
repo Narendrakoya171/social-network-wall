@@ -2,21 +2,29 @@
     <div class="content-wrapper">
         <mat-form-field appearance="fill">
             <textarea
-                matInput="matInput"
+                matInput="matInput" [(ngModel)]="text"
                 cokTextareaAutosize="cokTextareaAutosize"
                 cdkAutosizeMinRows="5"
                 placeholder="search"></textarea>
         </mat-form-field>
         <div class="new-post-actions-container">
-            <button mat-raised-button="mat-raised-button" class="post-button">post</button>
+            <button mat-raised-button="mat-raised-button" (click)="post()" class="post-button">post</button>
+            <mat-form-field  class="image-button">
+              <ngx-mat-file-input class="image-input" #removeableinput placeholder="upload image" (change)="onPreselected($event)" >
+
+              </ngx-mat-file-input>
+              <button mat-icon-button matSuffix *ngIf="!removeableinput.empty" (click)="removeableinput.clear($event)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-form-field>
         </div>
-        <mat-card class="post-card">
+        <mat-card class="post-card" *ngFor="let post of posts.reverse(); let i=index">
             <mat-card-header>
-                <mat-card-title>Charn</mat-card-title>
+                <mat-card-title>{{post.userName}}</mat-card-title>
             </mat-card-header>
-            <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlH8s1Aex8wjVGqgWzfB0uabOMGh_4uBR62WeZdUXI8Q&s"
-                alt="image"
+            <img *ngIf="(post.imageURL!=='' && post.imageURL!=undefined )"
+                [src]="post.imageURL"
+                alt="image" width="50" height="50"
                 mat-card-image="mat-card-image">
                 <mat-card-content>
                     <p>
@@ -24,30 +32,30 @@
                     </p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button
+                    <button (click)="like(post.id)"
                         class="like-button"
                         mat-icon-button="mat-icon-button"
                         disableRipple="true">
                         <mat-icon>
-                            favorite_border
+                          {{post?.likes?.indexOf(UsersService.user.id)>=0 ?  'favorite' :'favorite_border'}}
                         </mat-icon>
                     </button>
-                    <span>10 liked it</span>
+                    <span>{{post?.likes?.length }} liked it</span>
                 </mat-card-actions>
                 <div class="comments-container">
                     <div class="comments">
-                        <div class="tittle">Comments</div>
-                        <p>
-                            <b>John</b>wow! Loved it!
+                        <div class="tittle"></div>
+                        <p  *ngFor="let comment of post.comments">
+                            <b>{{comment.userName}} : </b>{{comment.comment}}
                         </p>
                     </div>
                 </div>
                 <mat-form-field >
-                    <input matInput="matInput" type="text" placeholder="Add a comment"></mat-form-field>
+                    <input matInput="matInput" [(ngModel)]="commentText[i]"  type="text" placeholder="Add a comment"></mat-form-field>
                     <button
                         class="comment-button"
                         mat-button="mat-button"
-                        mat-raised-button="mat-raised-button">comment</button>
+                        mat-raised-button="mat-raised-button" (click)="comment(post.id,i)">comment</button>
                 </mat-card>
             </div>
         </div>
